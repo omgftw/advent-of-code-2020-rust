@@ -1,6 +1,6 @@
+use lazy_static::lazy_static;
 use regex::Regex;
 use std::fs;
-use lazy_static::lazy_static;
 
 #[cfg(test)]
 mod tests;

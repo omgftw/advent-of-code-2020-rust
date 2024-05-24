@@ -1,5 +1,6 @@
 mod day1;
 mod day2;
+mod day3;
 mod helpers;
 
 use clap::Parser;
@@ -58,12 +59,14 @@ async fn main() {
         let day2_part2 = day2::day2_part2(None);
         println!("Day 2 Part 2: {}", day2_part2);
     }
-    // if !args.single || args.day3 {
-    //     // Day 3
-    //     let day3_part1 = day3::day3(None);
-    //     println!("Day 3 Part 1: {}", day3_part1.0);
-    //     println!("Day 3 Part 2: {}", day3_part1.1);
-    // }
+    if !args.single || args.day3 {
+        // Day 3 part 1
+        let day3_part1 = day3::day3(false, None);
+        println!("Day 3 Part 1: {}", day3_part1);
+        // Day 3 part 2
+        let day3_part2 = day3::day3(true, None);
+        println!("Day 3 Part 2: {}", day3_part2);
+    }
     // if !args.single || args.day4 {
     //     // Day 4
     //     let day4 = day4::day4(None);
@@ -119,4 +122,7 @@ async fn main() {
     //     println!("Day 11 Part 1: {}", day11_part1);
     //     println!("Day 11 Part 2: {}", day11_part2);
     // }
+    else {
+        std::process::exit(1);
+    }
 }

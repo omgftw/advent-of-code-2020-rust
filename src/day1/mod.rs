@@ -22,11 +22,7 @@ pub(crate) fn day1(part2: bool, data: Option<String>) -> i32 {
             }
         }
     }
-    
-    let a = 5;
-    test(a);
-    println!("{}", a);
-    
+
     0
 }
 

@@ -2,7 +2,7 @@ use crate::day2;
 use std::fs;
 
 #[test]
-fn test_day1_test_data() {
+fn test_data() {
     let test_data = fs::read_to_string("src/day2/data/test_1.txt").unwrap();
     // Part 1
     assert_eq!(day2::day2_part1(Some(test_data.clone())), 2);
@@ -11,7 +11,7 @@ fn test_day1_test_data() {
 }
 
 #[test]
-fn test_day1() {
+fn main() {
     // Part 1
     assert_eq!(day2::day2_part1(None), 458);
     // Part 2
