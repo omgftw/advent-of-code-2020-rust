@@ -4,9 +4,6 @@ BINARY_PATH=./target/release/advent-of-code-2023-rust
 build:
 	cargo build --release
 
-target/release/advent-of-code-2023-rust:
-	cargo build --release
-
 benchmark_day1: build
 	hyperfine --warmup ${WARMUP} -- '${BINARY_PATH} --single --day1'
 

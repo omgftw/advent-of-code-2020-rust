@@ -1,5 +1,5 @@
-use std::fs;
 use crate::day1;
+use std::fs;
 
 #[test]
 fn test_day1_test_data() {

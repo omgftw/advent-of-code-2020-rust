@@ -50,12 +50,14 @@ async fn main() {
         let day1_part2 = day1::day1(true, None);
         println!("Day 1 Part 2: {}", day1_part2);
     }
-    // if !args.single || args.day2 {
-    //     // Day 2
-    //     let day2 = day2::day2(12, 13, 14, None);
-    //     println!("Day 2 Part 1: {:?}", day2.0);
-    //     println!("Day 2 Part 2: {:?}", day2.1);
-    // }
+    if !args.single || args.day2 {
+        // Day 2 part 1
+        let day2_part1 = day2::day2_part1(None);
+        println!("Day 2 Part 1: {}", day2_part1);
+        // Day 2 part 2
+        let day2_part2 = day2::day2_part2(None);
+        println!("Day 2 Part 2: {}", day2_part2);
+    }
     // if !args.single || args.day3 {
     //     // Day 3
     //     let day3_part1 = day3::day3(None);
@@ -94,7 +96,7 @@ async fn main() {
     //     let day8 = day8::day8(None, true).await;
     //     println!("Day 8 Part 2: {}", day8);
     // }
-    // 
+    //
     // if !args.single || args.day9 {
     //     // Day 9
     //     let day9 = day9::day9(None).await;
@@ -102,14 +104,14 @@ async fn main() {
     //     // let day9 = day9::day9(None, true).await;
     //     println!("Day 9 Part 2: {}", day9.1);
     // }
-    // 
+    //
     // if !args.single || args.day10 {
     //     // Day 10
     //     let day10 = day10::day10(None).await;
     //     println!("Day 10 Part 1: {}", day10.0);
     //     println!("Day 10 Part 2: {}", day10.1);
     // }
-    // 
+    //
     // if !args.single || args.day11 {
     //     // Day 11
     //     let day11_part1 = day11::day11(None, 1);
