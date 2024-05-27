@@ -19,6 +19,5 @@ fn main() -> eyre::Result<()> {
     assert_eq!(result.0, 848);
     // Part 2
     assert_eq!(result.1, 682);
-
     Ok(())
 }
