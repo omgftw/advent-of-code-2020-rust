@@ -25,7 +25,3 @@ pub(crate) fn day1(part2: bool, data: Option<String>) -> i32 {
 
     0
 }
-
-fn test(a: i32) -> i32 {
-    a
-}
