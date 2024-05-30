@@ -5,6 +5,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 mod helpers;
 
 use clap::Parser;
@@ -98,14 +99,14 @@ async fn main() -> Result<()> {
         println!("Day 7 Part 1: {}", day7.0);
         println!("Day 7 Part 2: {}", day7.1);
     }
-    // if !args.single || args.day8 {
-    //     // Day 8
-    //     let day8 = day8::day8(None, false).await;
-    //     println!("Day 8 Part 1: {}", day8);
-    //     let day8 = day8::day8(None, true).await;
-    //     println!("Day 8 Part 2: {}", day8);
-    // }
-    //
+    if !args.single || args.day8 {
+        // Day 8
+        let day8 = day8::day8(None)?;
+        println!("Day 8 Part 1: {}", day8.0);
+        // TODO finish this
+        println!("Day 8 Part 2: {}", day8.1);
+    }
+    
     // if !args.single || args.day9 {
     //     // Day 9
     //     let day9 = day9::day9(None).await;
