@@ -2,10 +2,10 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
-mod helpers;
 mod day5;
 mod day6;
 mod day7;
+mod helpers;
 
 use clap::Parser;
 use eyre::Result;
@@ -97,7 +97,6 @@ async fn main() -> Result<()> {
         let day7 = day7::day7(None)?;
         println!("Day 7 Part 1: {}", day7.0);
         println!("Day 7 Part 2: {}", day7.1);
-
     }
     // if !args.single || args.day8 {
     //     // Day 8

@@ -1,6 +1,6 @@
+use eyre::Result;
 use std::collections::HashMap;
 use std::fs;
-use eyre::Result;
 
 #[cfg(test)]
 mod tests;
@@ -19,7 +19,10 @@ pub(crate) fn day6(data: Option<String>) -> Result<(i32, i32)> {
             }
         }
         any_yes_total += yes_answers.len();
-        all_yes_total += yes_answers.iter().filter(|(_, &v)| v == group.lines().count()).count();
+        all_yes_total += yes_answers
+            .iter()
+            .filter(|(_, &v)| v == group.lines().count())
+            .count();
     }
 
     Ok((any_yes_total as i32, all_yes_total as i32))

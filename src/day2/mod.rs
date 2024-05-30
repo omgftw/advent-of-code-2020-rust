@@ -1,8 +1,8 @@
+use crate::helpers::OptionExt;
+use eyre::Result;
 use lazy_static::lazy_static;
 use regex::Regex;
 use std::fs;
-use eyre::{Result};
-use crate::helpers::OptionExt;
 
 #[cfg(test)]
 mod tests;

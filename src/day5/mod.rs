@@ -1,6 +1,6 @@
+use eyre::Result;
 use std::fs;
 use std::ops::Range;
-use eyre::Result;
 
 #[cfg(test)]
 mod tests;

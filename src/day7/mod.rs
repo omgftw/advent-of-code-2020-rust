@@ -1,7 +1,7 @@
+use crate::helpers::OptionExt;
+use eyre::Result;
 use std::collections::{HashMap, HashSet};
 use std::fs;
-use eyre::Result;
-use crate::helpers::OptionExt;
 
 #[cfg(test)]
 mod tests;
@@ -59,13 +59,15 @@ pub(crate) fn day7(data: Option<String>) -> Result<(i32, i32)> {
     }
 
     let find_bag = "shiny gold";
-    let reverse_bag_map = all_bags.iter().fold(HashMap::new(), |mut acc, (key, value)| {
-        for (k, _) in value.iter() {
-            let entry: &mut HashSet<String> = acc.entry(k.to_string()).or_default();
-            entry.insert(key.to_string());
-        }
-        acc
-    });
+    let reverse_bag_map = all_bags
+        .iter()
+        .fold(HashMap::new(), |mut acc, (key, value)| {
+            for (k, _) in value.iter() {
+                let entry: &mut HashSet<String> = acc.entry(k.to_string()).or_default();
+                entry.insert(key.to_string());
+            }
+            acc
+        });
     let mut top_parent_bags = HashSet::new();
     let parent_bags = get_top_level_parent_bags(&reverse_bag_map, find_bag, &mut top_parent_bags);
     let child_bags = get_child_bags(&all_bags, find_bag);

@@ -1,6 +1,6 @@
 use crate::day2;
-use std::fs;
 use eyre::Result;
+use std::fs;
 
 #[test]
 fn test_data() -> Result<()> {
