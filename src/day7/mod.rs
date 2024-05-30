@@ -6,19 +6,20 @@ use crate::helpers::OptionExt;
 #[cfg(test)]
 mod tests;
 
-fn get_parent_bags(bags: &HashMap<String, HashMap<String, i32>>, bag: &str) -> (HashSet<String>, i32) {
+fn get_top_level_parent_bags(
+    bags: &HashMap<String, HashSet<String>>,
+    bag: &str,
+    top_parent_bags: &mut HashSet<String>,
+) -> i32 {
     let mut total = 0;
-    let mut parents = HashSet::new();
-    for key in bags.keys() {
-        if bags[key].contains_key(bag) {
-            total += bags[key][bag];
-            parents.insert(key.to_string());
-            let (p, c) = get_parent_bags(bags, key);
-            parents.extend(p);
-            total += c;
+    if let Some(parents) = bags.get(bag) {
+        for parent in parents {
+            if top_parent_bags.insert(parent.to_string()) {
+                total += 1 + get_top_level_parent_bags(bags, parent, top_parent_bags);
+            }
         }
     }
-    (parents, total)
+    total
 }
 
 fn get_child_bags(bags: &HashMap<String, HashMap<String, i32>>, bag: &str) -> i32 {
@@ -49,14 +50,25 @@ pub(crate) fn day7(data: Option<String>) -> Result<(i32, i32)> {
         for bag in bags {
             let bag = bag.split(' ').collect::<Vec<&str>>();
             let count = bag[0].parse::<i32>().unwrap_or(0);
+            if count == 0 {
+                continue;
+            }
             let bag_name = bag[1..bag.len() - 1].join(" ");
             top_bag.insert(bag_name, count);
         }
     }
 
     let find_bag = "shiny gold";
-    let (parent_bags, _) = get_parent_bags(&all_bags, find_bag);
+    let reverse_bag_map = all_bags.iter().fold(HashMap::new(), |mut acc, (key, value)| {
+        for (k, _) in value.iter() {
+            let entry: &mut HashSet<String> = acc.entry(k.to_string()).or_default();
+            entry.insert(key.to_string());
+        }
+        acc
+    });
+    let mut top_parent_bags = HashSet::new();
+    let parent_bags = get_top_level_parent_bags(&reverse_bag_map, find_bag, &mut top_parent_bags);
     let child_bags = get_child_bags(&all_bags, find_bag);
 
-    Ok((parent_bags.len() as i32, child_bags))
+    Ok((parent_bags, child_bags))
 }
